@@ -1,5 +1,4 @@
 @import com.rcoyto.springBookStore.books.Book
-@import java.time.format.DateTimeFormatter
 @import com.rcoyto.springBookStore.books.Cover
 @import com.rcoyto.springBookStore.books.Genre
 @import com.rcoyto.springBookStore.books.Publisher
@@ -52,7 +51,7 @@
             </select>
         </label>
         <label>Pages
-            <input class="form-control" type="text" placeholder="pages" name="pages"">
+            <input class="form-control" type="text" placeholder="pages" name="pages">
         </label>
             <input hx-post="/books/" type="button" value="Add" class="btn btn-primary mt-3">
     </div>

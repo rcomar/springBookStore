@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/jte-classes/gg/jte/generated/ondemand/pages/home/JteindexGenerated$1.class
+/jte-classes/gg/jte/generated/ondemand/pages/home/JteindexGenerated.class
+/jte-classes/gg/jte/generated/ondemand/pages/home/JteindexGenerated.java
