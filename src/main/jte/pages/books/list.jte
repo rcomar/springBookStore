@@ -3,12 +3,6 @@
 @import com.rcoyto.springBookStore.commons.PageDetail
 @import org.springframework.data.domain.Page
 
-@param int size
-@param int currentPage
-@param int previousPage
-@param int totalPages
-@param boolean isFirst
-@param boolean isLast
 @param Page<Book> responsePage
 @param PageDetail pageDetail
 @param List<Book> books
@@ -19,11 +13,10 @@
     <tr>
         <th>Isbn</th>
         <th>Title</th>
-        <th>Nr. of pages</th>
         <th>Genre</th>
         <th>Publisher</th>
-        <th>Language</th>
         <th>Cover</th>
+        <th>Author</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -44,12 +37,10 @@
             <tr>
                 <td>${book.getIsbn()}</td>
                 <td>${book.getTitle()}</td>
-                <td>${book.getPages()}</td>
                 <td>${book.getGenre().getValue()}</td>
                 <td>${book.getPublisher().getValue()}</td>
-                <td>${book.getLanguage().getValue()}</td>
                 <td>${book.getCover().getValue()}</td>
-
+                <td>${book.getAuthor().getName()}</td>
                 <td>
                     <button class="btn btn-primary"
                             hx-get="/books/${book.getIsbn()}"

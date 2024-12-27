@@ -1,11 +1,10 @@
 package com.rcoyto.springBookStore.books;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import com.rcoyto.springBookStore.authors.Author;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "books")
 public class Book {
@@ -28,6 +27,29 @@ public class Book {
 
     @Enumerated(EnumType.STRING)
     private Cover cover;
+
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Author.class, optional = false)
+    private Author author;
+
+    public Book(String isbn, String title, int pages, Genre genre, Publisher publisher, Language language, Cover cover, Author author, LocalDateTime deactivationDate) {
+        this.isbn = isbn;
+        this.title = title;
+        this.pages = pages;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.language = language;
+        this.cover = cover;
+        this.author = author;
+        this.deactivationDate = deactivationDate;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     private LocalDateTime deactivationDate;
 
@@ -93,16 +115,6 @@ public class Book {
 
     public void setDeactivationDate(LocalDateTime deactivationDate) {
         this.deactivationDate = deactivationDate;
-    }
-
-    public Book(String isbn, String title, int pages, Genre genre, Publisher publisher, Language language, Cover cover) {
-        this.isbn = isbn;
-        this.title = title;
-        this.pages = pages;
-        this.genre = genre;
-        this.publisher = publisher;
-        this.language = language;
-        this.cover = cover;
     }
 
     public Book() {

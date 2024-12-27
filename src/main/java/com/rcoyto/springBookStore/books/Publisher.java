@@ -2,6 +2,7 @@ package com.rcoyto.springBookStore.books;
 
 public enum Publisher {
 
+    INDEPENDENTLY_PUBLISHED("Independently published"),
     PENGUIN_RANDOM_HOUSE("Penguin Random House"),
     MINOTAURO("Minotauro"),
     DEBOLSILLO("Debolsillo"),

@@ -26,16 +26,11 @@ public class BookController {
 
         model.addAttribute("responsePage", responsePage);
         model.addAttribute("books", responsePage.getContent());
-        model.addAttribute("currentPage", responsePage.getPageable().getPageNumber() + 1);
-        model.addAttribute("previousPage", responsePage.getPageable().getPageNumber() - 1);
-        model.addAttribute("size", responsePage.getContent().size());
-        model.addAttribute("isFirst", responsePage.isFirst());
-        model.addAttribute("isLast", responsePage.isLast());
-        model.addAttribute("totalPages", responsePage.getTotalPages());
 
-        PageDetail pageDetail = new PageDetail("Books","List of books");
-        model.addAttribute("pageDetail", pageDetail);
-
+        model.addAttribute(
+                "pageDetail",
+                new PageDetail("Books","List of books")
+        );
         return "pages/books/list";
     }
 
@@ -50,7 +45,6 @@ public class BookController {
         if (isbn.equals("0")) {
             return "pages/books/details_new";
         }
-
         return "pages/books/details_update";
     }
 

@@ -3,7 +3,7 @@ package com.rcoyto.springBookStore.books;
 public enum Cover{
 
     PAPERBACK("Paperback"),
-    MASSMARKET("Mass Market Paperback"),
+    MASS_MARKET("Mass Market Paperback"),
     HARDCOVER("Hardcover");
 
     private final String type;

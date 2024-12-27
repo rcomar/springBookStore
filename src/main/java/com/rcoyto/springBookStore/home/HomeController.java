@@ -11,10 +11,10 @@ public class HomeController {
     @GetMapping("")
     public String home(Model model) {
 
-        PageDetail pageDetail = new PageDetail("Home","Home page");
-
-        model.addAttribute("pageDetail", pageDetail);
-
+        model.addAttribute(
+                "pageDetail",
+                new PageDetail("Spring Book Store","Home page")
+        );
         return "pages/home/index";
     }
 

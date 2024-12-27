@@ -52,6 +52,7 @@
         </label>
         <label>Pages
             <input class="form-control" type="text" placeholder="pages" name="pages">
+            <div style="visible:false" hx-get="/authors/authorsData" hx-swap="innerhtml" hx-trigger="load" hx-target="this">asd</div>
         </label>
             <input hx-post="/books/" type="button" value="Add" class="btn btn-primary mt-3">
     </div>

@@ -14,6 +14,7 @@
     <title>${pageDetail.getTitle()}</title>
     <script src="/js/htmx.min.js"></script>
     <script>if(!window.htmx) document.write('<script src="https://unpkg.com/htmx.org@2.0.4"><\/script>');</script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
 </head>
 <body class="m-2">
 
@@ -27,6 +28,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="/books/?size=5" hx-boost="true">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/authors/?size=5" hx-boost="true">Authors</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
