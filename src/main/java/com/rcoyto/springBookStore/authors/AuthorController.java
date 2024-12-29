@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,10 @@ public class AuthorController {
 
     @GetMapping("/{id}")
     private String getById(Model model, @PathVariable int id) {
-        model.addAttribute("author", authorService.getById(id));
+
+        Author author = authorService.getById(id);
+
+        model.addAttribute("author", author);
 
         if (id == 0) {
             return "pages/authors/detail_new";

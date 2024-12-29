@@ -5,17 +5,16 @@
 
 <form class="form">
     <div class="row mb-3">
-        <label>Isbn
-            <input class="form-control" type="text" placeholder="Id" name="id" value="${author.getId()}">
+        <label>Id
+            <input disabled class="form-control" type="text" placeholder="Id" name="id" value="${author.getId()}">
         </label>
-        <label>Title
+        <label>Name
             <input class="form-control" type="text" placeholder="Name" name="name" value="${author.getName()}">
         </label>
 
-        <label>Pages
-            <input class="form-control" type="date" placeholder="Birth date" name="birth_date" value="${ author.getBirthDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}">
+        <label>Birth date
+            <input class="form-control" type="date" placeholder="Birth date" name="birthDate" value="${author.getBirthDate().format(DateTimeFormatter.ISO_LOCAL_DATE)}">
         </label>
         <input hx-put="/authors/" type="button" value="Update" class="btn btn-primary mt-3">
     </div>
 </form>
-

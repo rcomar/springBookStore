@@ -1,15 +1,18 @@
+@import com.rcoyto.springBookStore.authors.AuthorDataDTO
 @import com.rcoyto.springBookStore.books.Book
 @import java.time.format.DateTimeFormatter
 @import com.rcoyto.springBookStore.books.Cover
 @import com.rcoyto.springBookStore.books.Genre
 @import com.rcoyto.springBookStore.books.Publisher
 @import com.rcoyto.springBookStore.books.Language
+@import java.util.List
 
+@param Book book
+@param List<AuthorDataDTO> authorsData
 @param Cover[] covers
 @param Genre[] genres
 @param Publisher[] publishers
 @param Language[] languages
-@param Book book
 
 <form class="form">
     <div class="row mb-3">
@@ -67,10 +70,23 @@
                 @endfor
             </select>
         </label>
-
         <label>Pages
             <input class="form-control" type="text" placeholder="pages" name="pages" value="${ book.getPages()}">
         </label>
+        <label>
+            Authors
+            <select  class="form-control" required name="authors">
+                <option value="">Select an option...</option>
+                @for(AuthorDataDTO data: authorsData)
+                    @if(data.getId() == book.getAuthor().getId())
+                        <option selected id="author${data.getId()}" value="${data.getId()}">${data.getName()}</option>
+                    @else
+                        <option id="author${data.getId()}" value="${data.getId()}">${data.getName()}</option>
+                    @endif
+                @endfor
+            </select>
+        </label>
+
         @if(book != null && book.getDeactivationDate() != null)
         <label>Deactivation date</label>
             <p>${book.getDeactivationDate().format(DateTimeFormatter.BASIC_ISO_DATE)}</p>

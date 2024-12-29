@@ -6,8 +6,14 @@
 @param Page<Book> responsePage
 @param PageDetail pageDetail
 @param List<Book> books
-
+@param boolean showDeact = false
 @template.pages.books.index(pageDetail = pageDetail, list = @`
+
+
+    <label>Show Deactivated
+        <input class="checkbox" type="checkbox" hx-target="body" hx-trigger="change" hx-get="/books/?size=${responsePage.getPageable().getPageSize()}&page=${responsePage.getPageable().getPageNumber()}" name="showDeact" checked="${showDeact}" value="${showDeact}">
+    </label>
+
 <table id="mainTable" class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -45,7 +51,7 @@
                     <button class="btn btn-primary"
                             hx-get="/books/${book.getIsbn()}"
                             hx-target="#book_detail"
-                            type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_book_detail">Details</button>
+                            type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_book_detail">Edit</button>
 
                     <button class="btn btn-danger"
                             hx-delete="/books/${book.getIsbn()}"
@@ -62,24 +68,24 @@
         @if(responsePage.isFirst())
             disabled
         @endif"
-           href="/books/?size=5&page=0" hx-boost="true">${"<< Primera"}</a>
+           href="/books/?showDeact=${showDeact}&size=5&page=0" hx-boost="true">${"<< Primera"}</a>
         <a class="btn btn-primary
         @if(responsePage.isFirst())
             disabled
         @endif"
-           href="/books/?size=5&page=${responsePage.getPageable().getPageNumber() - 1}" hx-boost="true">${"< Anterior"}
+           href="/books/?showDeact=${showDeact}&size=5&page=${responsePage.getPageable().getPageNumber() - 1}" hx-boost="true">${"< Anterior"}
             </a>
         <p class="btn btn-outline-primary disabled" style="display:inline">${responsePage.getPageable().getPageNumber() + 1}</p>
         <a class="btn btn-primary
          @if(responsePage.isLast())
             disabled
         @endif"
-            href="/books/?size=5&page=${responsePage.getPageable().getPageNumber() + 1}" hx-boost="true">${"Siguiente >"}</a>
+            href="/books/?showDeact=${showDeact}&size=5&page=${responsePage.getPageable().getPageNumber() + 1}" hx-boost="true">${"Siguiente >"}</a>
         <a class="btn btn-primary
         @if(responsePage.isLast())
             disabled
         @endif"
-           href="/books/?size=5&page=${responsePage.getTotalPages() - 1}" hx-boost="true">${"Última >>"}</a>
+           href="/books/?showDeact=${showDeact}&size=5&page=${responsePage.getTotalPages() - 1}" hx-boost="true">${"Última >>"}</a>
 
         <p class="mr-5" style="display:inline">There's ${responsePage.getTotalElements()} books in total.</p>
     </div>

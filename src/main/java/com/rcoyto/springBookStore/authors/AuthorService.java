@@ -27,7 +27,7 @@ public class AuthorService {
         authorRepository.save(author);
     }
 
-    List<AuthorDataDTO> getAuthorsData() {
+    public List<AuthorDataDTO> getAuthorsData() {
         return authorRepository.getAuthorsData();
     }
 }

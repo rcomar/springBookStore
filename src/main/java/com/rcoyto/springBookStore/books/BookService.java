@@ -19,8 +19,11 @@ public class BookService {
     }
 
     Optional<Book> getById(String isbn) {return bookRepository.findById(isbn);}
-    Page<Book> getAll(Pageable pageable) {
-        return bookRepository.findByDeactivationDateIsNull(pageable);
+    Page<Book> getAll(Pageable pageable, boolean showDeactivated) {
+        if (!showDeactivated) {
+            return bookRepository.findByDeactivationDateIsNull(pageable);
+        }
+        return bookRepository.findAll(pageable);
     }
 
     void add(Book book) {

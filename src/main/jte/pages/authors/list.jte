@@ -25,14 +25,14 @@
 
                 @for(Author author:authors)
                     <tr>
-                        <td>${author.getId()}</td>
+                        <td >${author.getId()}</td>
                         <td>${author.getName()}</td>
-                        <td>${author.getBirthDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}</td>
+                        <td>${author.getBirthDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}</td>
                         <td>
                             <button class="btn btn-primary"
                                     hx-get="/authors/${author.getId()}"
                                     hx-target="#author_detail"
-                                    type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_author_detail">Details</button>
+                                    type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_author_detail">Edit</button>
                         </td>
                     </tr>
                 @endfor

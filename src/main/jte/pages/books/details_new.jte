@@ -3,7 +3,10 @@
 @import com.rcoyto.springBookStore.books.Genre
 @import com.rcoyto.springBookStore.books.Publisher
 @import com.rcoyto.springBookStore.books.Language
+@import com.rcoyto.springBookStore.authors.AuthorDataDTO
+@import java.util.List
 
+@param List<AuthorDataDTO> authorsData
 @param Cover[] covers
 @param Genre[] genres
 @param Publisher[] publishers
@@ -52,7 +55,15 @@
         </label>
         <label>Pages
             <input class="form-control" type="text" placeholder="pages" name="pages">
-            <div style="visible:false" hx-get="/authors/authorsData" hx-swap="innerhtml" hx-trigger="load" hx-target="this">asd</div>
+        </label>
+        <label>
+            Authors
+            <select class="form-control" required name="authors">
+                <option value="">Select an option...</option>
+                @for(AuthorDataDTO data: authorsData)
+                    <option id="author${data.getId()}" value="${data.getId()}">${data.getName()}</option>
+                @endfor
+            </select>
         </label>
             <input hx-post="/books/" type="button" value="Add" class="btn btn-primary mt-3">
     </div>
