@@ -95,7 +95,8 @@ public class Book {
         this.deactivationDate = deactivationDate;
     }
 
-    public Book(String isbn, String title, int pages, Genre genre, Publisher publisher, Language language, Cover cover) {
+    public Book(String isbn, String title, int pages, Genre genre, Publisher publisher, Language language,
+            Cover cover) {
         this.isbn = isbn;
         this.title = title;
         this.pages = pages;

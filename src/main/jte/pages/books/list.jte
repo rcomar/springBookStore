@@ -17,38 +17,38 @@
 <table id="mainTable" class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th>Isbn</th>
+        <th class="d-none d-lg-table-cell">Isbn</th>
         <th>Title</th>
-        <th>Nr. of pages</th>
+        <th class="d-none d-lg-table-cell">Nr. of pages</th>
         <th>Genre</th>
-        <th>Publisher</th>
+        <th class="d-none d-lg-table-cell">Publisher</th>
         <th>Language</th>
-        <th>Cover</th>
+        <th class="d-none d-lg-table-cell">Cover</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     @if(books.isEmpty())
         <tr>
+            <td class="d-none d-lg-table-cell"></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="d-none d-lg-table-cell"></td>
             <td>There is no books</td>
+            <td class="d-none d-lg-table-cell"></td>
             <td></td>
-            <td></td>
+            <td class="d-none d-lg-table-cell"></td>
             <td></td>
         </tr>
     @else
         @for(Book book:books)
             <tr>
-                <td>${book.getIsbn()}</td>
+                <td class="d-none d-lg-table-cell">${book.getIsbn()}</td>
                 <td>${book.getTitle()}</td>
-                <td>${book.getPages()}</td>
+                <td class="d-none d-lg-table-cell">${book.getPages()}</td>
                 <td>${book.getGenre().getValue()}</td>
-                <td>${book.getPublisher().getValue()}</td>
+                <td class="d-none d-lg-table-cell">${book.getPublisher().getValue()}</td>
                 <td>${book.getLanguage().getValue()}</td>
-                <td>${book.getCover().getValue()}</td>
+                <td class="d-none d-lg-table-cell">${book.getCover().getValue()}</td>
 
                 <td>
                     <button class="btn btn-primary"
@@ -56,10 +56,10 @@
                             hx-target="#book_detail"
                             type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_book_detail">Details</button>
 
-                    <button class="btn btn-danger"
+                    <button class="btn btn-danger fs-6"
                             hx-delete="/books/${book.getIsbn()}"
-                            hx-confirm="Are you sure you wish to deactivate the book ${book.getTitle()}?">
-                        Deactivate</button>
+                            hx-confirm="Are you sure you wish to disable the book ${book.getTitle()}?">
+                        Disable</button>
                 </td>
             </tr>
         @endfor

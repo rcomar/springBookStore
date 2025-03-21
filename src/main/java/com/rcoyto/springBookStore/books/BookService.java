@@ -13,12 +13,14 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    Optional<Book> getById(String isbn) {return bookRepository.findById(isbn);}
+    Optional<Book> getById(String isbn) {
+        return bookRepository.findById(isbn);
+    }
+
     Page<Book> getAll(Pageable pageable) {
         return bookRepository.findByDeactivationDateIsNull(pageable);
     }
@@ -46,12 +48,15 @@ public class BookService {
     Cover[] getCovers() {
         return Cover.values();
     }
+
     Genre[] getGenres() {
         return Genre.values();
     }
+
     Publisher[] getPublisher() {
         return Publisher.values();
     }
+
     Language[] getLanguages() {
         return Language.values();
     }

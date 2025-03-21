@@ -8,7 +8,7 @@
 @template.layout.main(pageDetail = pageDetail, content = @`
 
     <div class="flex">
-    <button hx-get="/books/0" hx-target="#book_detail" type="button" class="btn btn-success inline" data-bs-toggle="modal" data-bs-target="#modal_book_detail"> + New Book</button>
+    <button hx-get="/books/0" hx-target="#book_detail" type="button" class="btn btn-success inline m-2" data-bs-toggle="modal" data-bs-target="#modal_book_detail"> + New Book</button>
     </div>
 
     <div>${list}</div>
