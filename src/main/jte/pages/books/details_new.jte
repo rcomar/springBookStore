@@ -53,7 +53,7 @@
         <label>Pages
             <input class="form-control" type="text" placeholder="pages" name="pages">
         </label>
-            <input hx-post="/books/" type="button" value="Add" class="btn btn-primary mt-3">
+            <input hx-post="/books/" hx-include="#pagina-actual" type="button" value="Add" class="btn btn-primary mt-3">
     </div>
 </form>
 

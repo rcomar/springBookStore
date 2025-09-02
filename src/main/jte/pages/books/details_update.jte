@@ -71,11 +71,11 @@
         <label>Pages
             <input class="form-control" type="text" placeholder="pages" name="pages" value="${ book.getPages()}">
         </label>
-        @if(book != null && book.getDeactivationDate() != null)
+        @if(book.getDeactivationDate() != null)
         <label>Deactivation date</label>
             <p>${book.getDeactivationDate().format(DateTimeFormatter.BASIC_ISO_DATE)}</p>
         @endif
-        <input hx-put="/books/" type="button" value="Update" class="btn btn-primary mt-3">
+        <input hx-put="/books/" hx-include="#pagina-actual" type="button" value="Update" class="btn btn-primary mt-3">
     </div>
 </form>
 

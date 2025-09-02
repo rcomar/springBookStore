@@ -1,7 +1,9 @@
 package com.rcoyto.springBookStore.books;
 
+import com.rcoyto.springBookStore.commons.Constants;
 import com.rcoyto.springBookStore.commons.PageDetail;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ public class BookController {
 
     @GetMapping("/")
     private String get(Model model, Pageable pageable) {
+
+        pageable = PageRequest.of(pageable.getPageNumber(), Constants.SIZE_PAGE, pageable.getSort());
 
         Page<Book> responsePage = bookService.getAll(pageable);
 
@@ -55,15 +59,15 @@ public class BookController {
     }
 
     @PostMapping("/")
-    private ResponseEntity<String> add(@ModelAttribute Book book) {
+    private ResponseEntity<String> add(@ModelAttribute Book book, @RequestParam(name = "pagina-actual", required = false) int paginaActual) {
         bookService.add(book);
-        return ResponseEntity.status(HttpStatus.OK).header("HX-Redirect", "/books/").build();
+        return ResponseEntity.status(HttpStatus.OK).header("HX-Redirect", "/books/?size="+ Constants.SIZE_PAGE + "&page=" + paginaActual).build();
     }
 
     @PutMapping(path = "/")
-    private ResponseEntity<String> update(@RequestBody @ModelAttribute Book book) {
+    private ResponseEntity<String> update(@RequestBody @ModelAttribute Book book, @RequestParam(name = "pagina-actual", required = false) int paginaActual) {
         bookService.update(book);
-        return ResponseEntity.status(HttpStatus.OK).header("HX-Redirect", "/books/").build();
+        return ResponseEntity.status(HttpStatus.OK).header("HX-Redirect", "/books/?size="+ Constants.SIZE_PAGE + "&page=" + paginaActual).build();
     }
 
     @DeleteMapping(path = "/{isbn}")

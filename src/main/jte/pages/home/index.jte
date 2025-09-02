@@ -3,11 +3,7 @@
 @param PageDetail pageDetail
 
 @template.layout.main(pageDetail = pageDetail, content = @`
-    <ul>
-        <li>hola</li>
-        <li>como</li>
-        <li>estas</li>
-    </ul>
+    <h1>Book Store</h1>
 
 `)
 
